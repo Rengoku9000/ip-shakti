@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Office temporary lock files
+~$*
+
+# Temporary test / evaluation exports
+tmp_eval*.pdf
+tmp_eval.pdf
+test_replaced.pptx
+test_print.pdf
+test_print.html
+check_securemesh.pdf
+orig.pptx.pdf
+new7.pptx.pdf
+test_s6.png
+
+# Scratch inspection dumps & previews
+slide_shapes_dump.txt
+all_runs_dump.txt
+dumped_icons/
+slides_preview/
+
+# SQLite temporary WAL / SHM files
+*.db-wal
+*.db-shm
+*.db-journal
+
+# OS generated files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,74 @@
+=== SOURCE METADATA ===
+source_id: patents_act_1970
+title: The Patents Act, 1970 (Act No. 39 of 1970) - Provisions on Patentability and Traditional Knowledge
+short_title: Patents Act 1970
+authority: Intellectual Property India, Ministry of Commerce and Industry, Government of India
+source_type: STATUTE
+authority_level: PRIMARY
+jurisdiction: INDIA
+language: en
+version: The Patents Act, 1970 (incorporating all amendments till 01-08-2024)
+publication_date: 1970-09-19
+effective_from: 1972-04-20
+source_url: https://www.ipindia.gov.in/pages/patents/publications/acts
+legal_status: IN_FORCE
+effective_status: IN_FORCE
+status_checked_at: 2026-09-30T14:40:00Z
+verification_status: verified_current
+=== END METADATA ===
+
+[SECTION: Section 2(1)(j)]
+Section 2(1)(j) - Definition of Invention:
+"invention" means a new product or process involving an inventive step and capable of industrial application.
+
+[SECTION: Section 2(1)(ja)]
+Section 2(1)(ja) - Definition of Inventive Step:
+"inventive step" means a feature of an invention that involves technical advance as compared to the existing knowledge or having economic significance or both and that makes the invention not obvious to a person skilled in the art.
+
+[SECTION: Section 3]
+Section 3 - What are not inventions:
+The following are not inventions within the meaning of this Act,—
+
+[SECTION: Section 3(a)]
+Section 3(a):
+an invention which is frivolous or which claims anything obviously contrary to well established natural laws;
+
+[SECTION: Section 3(b)]
+Section 3(b):
+an invention the primary or intended use or commercial exploitation of which could be contrary to public order or morality or which causes serious prejudice to human, animal or plant life or health or to the environment;
+
+[SECTION: Section 3(c)]
+Section 3(c):
+the mere discovery of a scientific principle or the formulation of an abstract theory or discovery of any living thing or non-living substance occurring in nature;
+
+[SECTION: Section 3(d)]
+Section 3(d):
+the mere discovery of a new form of a known substance which does not result in the enhancement of the known efficacy of that substance or the mere discovery of any new property or new use for a known substance or of the mere use of a known process, machine or apparatus unless such known process results in a new product or employs at least one new reactant.
+Explanation.—For the purposes of this clause, salts, esters, ethers, polymorphs, metabolites, pure form, particle size, isomers, mixtures of isomers, complexes, combinations and other derivatives of known substance shall be considered to be the same substance, unless they differ significantly in properties with regard to efficacy.
+
+[SECTION: Section 3(e)]
+Section 3(e):
+a substance obtained by a mere admixture resulting only in the aggregation of the properties of the components thereof or a process for producing such substance;
+
+[SECTION: Section 3(h)]
+Section 3(h):
+a method of agriculture or horticulture;
+
+[SECTION: Section 3(i)]
+Section 3(i):
+any process for the medicinal, surgical, curative, prophylactic, diagnostic, therapeutic or other treatment of human beings or any process for a similar treatment of animals to render them free of disease or to increase their economic value or that of their products;
+
+[SECTION: Section 3(p)]
+Section 3(p):
+an invention which in effect, is traditional knowledge or which is an aggregation or duplication of known properties of traditionally known component or components.
+
+[SECTION: Section 10(4)]
+Section 10(4) - Contents of Specifications:
+Every complete specification shall—
+(a) fully and particularly describe the invention and its operation or use and the method by which it is to be performed;
+(b) disclose the best method of performing the invention which is known to the applicant and for which he is entitled to claim protection; and
+(c) end with a claim or claims defining the scope of the invention for which protection is claimed;
+(d) be accompanied by an abstract to provide technical information on the invention:
+Provided that—
+(ii) if the applicant mentions a biological material in the specification which may not be described in such a way as to satisfy clauses (a) and (b), and if such material is not available to the public, the application shall be completed by depositing the material with an authorized international depository authority under the Budapest Treaty;
+(D) disclose the source and geographical origin of the biological material in the specification, when used in an invention.

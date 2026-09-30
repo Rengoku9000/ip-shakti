@@ -1,0 +1,10 @@
+[browser]
+gatherUsageStats = false
+
+[client]
+showSidebarNavigation = false
+
+[server]
+headless = true
+port = 8501
+

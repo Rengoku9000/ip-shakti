@@ -1,0 +1,56 @@
+=== SOURCE METADATA ===
+source_id: biological_diversity_act_2002
+title: The Biological Diversity Act, 2002 (Act No. 18 of 2003) - Key Provisions on Intellectual Property and ABS
+short_title: Biological Diversity Act 2002
+authority: National Biodiversity Authority, Ministry of Environment, Forest and Climate Change, Government of India
+source_type: STATUTE
+authority_level: PRIMARY
+jurisdiction: INDIA
+language: en
+version: Act 18 of 2003 (India Code Consolidated Text, noting Biological Diversity (Amendment) Act 2023)
+publication_date: 2003-02-05
+effective_from: 2003-02-05
+source_url: https://www.indiacode.nic.in/handle/123456789/2046?sam_handle=123456789/1362
+legal_status: IN_FORCE
+effective_status: IN_FORCE
+status_checked_at: 2026-09-30T14:40:00Z
+verification_status: verified_current
+=== END METADATA ===
+
+[SECTION: Section 2(a)]
+Section 2(a) - Definition of Commercial Utilization:
+"commercial utilization" means end uses of biological resources for commercial utilization such as drugs, industrial enzymes, food flavours, fragrance, cosmetics, emulsifiers, oleoresins, colours, extracts and genes used for improving crops and livestock through genetic intervention, but does not include conventional breeding or traditional practices in use in any agriculture, horticulture, poultry, dairy farming, animal husbandry or bee keeping.
+
+[SECTION: Section 2(c)]
+Section 2(c) - Definition of Biological Resources:
+"biological resources" means plants, animals and micro-organisms or parts thereof, their genetic material and by-products (excluding value added products) with actual or potential use or value, but does not include human genetic material.
+
+[SECTION: Section 3]
+Section 3 - Certain persons not to undertake Biodiversity related activities without approval of National Biodiversity Authority:
+(1) No person who is not a citizen of India, or a citizen of India who is an NRI, or a body corporate, association or organization not incorporated or registered in India, or incorporated in India with non-Indian participation in its share capital or management, shall without previous approval of the National Biodiversity Authority obtain any biological resource occurring in India or knowledge associated thereto for research or for commercial utilization or for bio-survey and bio-utilization.
+
+[SECTION: Section 4]
+Section 4 - Results of research not to be transferred without approval of National Biodiversity Authority:
+No person shall, without the previous approval of the National Biodiversity Authority, transfer the results of any research relating to any biological resources occurring in, or obtained from, India, in whole or in part, to any person who is not a citizen of India or is a non-resident Indian or to any foreign body corporate.
+
+[SECTION: Section 6]
+Section 6 - Application for intellectual property rights not to be made without approval of National Biodiversity Authority:
+(1) No person shall apply for any intellectual property right, by whatever name called, in or outside India for any invention based on any research or information on a biological resource obtained from India without obtaining the previous approval of the National Biodiversity Authority before making such application:
+Provided that if a person applies for a patent, permission of the National Biodiversity Authority may be obtained after the acceptance of the patent but before the sealing of the patent by the patent authority concerned:
+Provided further that the National Biodiversity Authority shall dispose of the application for permission made to it within a period of ninety days from the date of receipt thereof.
+[Statutory Amendment Note]: Under the Biological Diversity (Amendment) Act, 2023 (Act 10 of 2023, notified 2024), approval of the National Biodiversity Authority is required before the grant of the patent (substituting 'before sealing'), and specific exemptions are provided for users of codified traditional knowledge and cultivated medicinal plants.
+(2) The National Biodiversity Authority may, while granting the approval under this section, impose benefit sharing fee or royalty or conditions on the sharing of financial benefits arising out of the commercial utilization of such rights.
+
+[SECTION: Section 7]
+Section 7 - Prior intimation to State Biodiversity Board for obtaining biological resource:
+No person who is a citizen of India or a body corporate, association or organization which is registered in India shall obtain any biological resource for commercial utilization, or bio-survey and bio-utilization for commercial utilization except after giving prior intimation to the State Biodiversity Board concerned:
+Provided that the provisions of this section shall not apply to the local people and communities of the area, including vaids and hakims, who have been practicing indigenous medicine.
+
+[SECTION: Section 19]
+Section 19 - Application to National Biodiversity Authority for access or IPR:
+(1) Any person referred to in sub-section (2) of section 3 who intends to obtain any biological resource occurring in India or knowledge associated thereto, or any person who intends to apply for a patent or any other intellectual property right under section 6, shall make an application in such form and on payment of such fees as may be prescribed to the National Biodiversity Authority.
+
+[SECTION: Section 21]
+Section 21 - Determination of equitable benefit sharing by National Biodiversity Authority:
+(1) The National Biodiversity Authority shall while approving the application for grant of access or transfer of results or applying for patent or other intellectual property rights, determine equitable benefit sharing which shall be in accordance with the formula formulated by the National Biodiversity Authority.
+(2) The benefit sharing may involve grant of joint ownership of intellectual property rights to the National Biodiversity Authority, or transfer of technology, location of production or research units, association of Indian scientists, or payment of monetary compensation and other non-monetary benefits.

@@ -1,55 +1,38 @@
 """
 FastAPI Backend for DRUGVISTA
-AWS Mapping: This would be deployed as Lambda + API Gateway
+Serves RAG analysis, multi-format document ingestion, and vector store statistics.
 """
+import os
+import sys
+import logging
+from pathlib import Path
+from typing import Optional
+
+# Ensure backend directory is in sys.path
+backend_dir = Path(__file__).resolve().parent
+if str(backend_dir) not in sys.path:
+    sys.path.insert(0, str(backend_dir))
+
 from fastapi import FastAPI, HTTPException, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from rag_pipeline import RAGPipeline
-from typing import Optional
-import logging
-import os
-import csv
-import json
-from io import StringIO, BytesIO
+
+import config
+from models import AnalysisRequest, AnalysisResponse, IngestResponse
+from rag_pipeline import rag
+from ingestion_service import ingestion_service
+from vector_store import vector_store
+from retriever import retriever
+from classification import query_classifier, retrieval_router
+from reasoning import reasoning_engine
+from multilingual import query_normalizer, answer_localizer, SupportedLanguage
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="DRUGVISTA API")
+app = FastAPI(title="DRUGVISTA API", version="2.0")
 
-# Supported file types
-ALLOWED_EXTENSIONS = {'.txt', '.csv', '.json', '.pdf', '.docx'}
-
-
-def extract_pdf_text(content: bytes) -> str:
-    """Extract text from PDF file"""
-    try:
-        import PyPDF2
-        pdf_reader = PyPDF2.PdfReader(BytesIO(content))
-        text_parts = []
-        for page in pdf_reader.pages:
-            text_parts.append(page.extract_text() or "")
-        return "\n".join(text_parts)
-    except ImportError:
-        raise HTTPException(status_code=500, detail="PyPDF2 not installed. Run: pip install PyPDF2")
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=f"Failed to parse PDF: {str(e)}")
-
-
-def extract_docx_text(content: bytes) -> str:
-    """Extract text from DOCX file"""
-    try:
-        from docx import Document
-        doc = Document(BytesIO(content))
-        text_parts = [para.text for para in doc.paragraphs if para.text.strip()]
-        return "\n".join(text_parts)
-    except ImportError:
-        raise HTTPException(status_code=500, detail="python-docx not installed. Run: pip install python-docx")
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=f"Failed to parse DOCX: {str(e)}")
-
-# CORS for frontend
+# CORS middleware for frontend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -58,232 +41,166 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize RAG pipeline
-try:
-    rag = RAGPipeline()
-    logger.info("RAG Pipeline initialized successfully")
-except Exception as e:
-    logger.error(f"Failed to initialize RAG: {e}")
-    rag = None
-
-class AnalysisRequest(BaseModel):
-    query: str
-
-class AnalysisResponse(BaseModel):
-    clinical_viability: str
-    key_evidence: list[str]
-    major_risks: list[str]
-    market_signal: str
-    recommendation: str
-    confidence_score: float
-    explanation: str
 
 @app.get("/")
 def root():
     return {
         "service": "DRUGVISTA API",
-        "version": "1.0",
-        "status": "operational"
+        "version": "2.0 (Phase 1 Refactor)",
+        "status": "operational",
+        "storage": str(config.STORAGE_DIR)
     }
+
 
 @app.get("/health")
 def health_check():
     return {
         "status": "healthy",
-        "rag_initialized": rag is not None
+        "rag_initialized": rag is not None,
+        "database_connected": config.DATABASE_PATH.exists()
     }
+
 
 @app.post("/analyze", response_model=AnalysisResponse)
 async def analyze(request: AnalysisRequest):
     """
-    Main analysis endpoint
-    AWS Mapping: Lambda function triggered by API Gateway
+    Main analysis endpoint with multi-step reasoning over retrieved chunks.
     """
     if not rag:
         raise HTTPException(status_code=503, detail="RAG pipeline not initialized")
-    
+
     if not request.query or len(request.query.strip()) < 3:
-        raise HTTPException(status_code=400, detail="Query too short")
-    
+        raise HTTPException(status_code=400, detail="Query too short (minimum 3 characters required)")
+
     try:
-        logger.info(f"Processing query: {request.query[:100]}")
-        result = rag.analyze(request.query)
-        logger.info("Analysis completed successfully")
+        # 1. Multilingual Query Normalization (Phase 2C)
+        ml_query = query_normalizer.normalize(request.query, explicit_language=request.language)
+
+        # 2. Classification & Routing (Phase 2B.1) on canonical normalized query
+        classification = query_classifier.classify(ml_query.normalized_text)
+        routing_plan = retrieval_router.create_routing_plan(classification)
+
+        # 3. Multi-track Retrieval (Phase 2A & 2B.1)
+        retrieved_by_track = retrieval_router.execute_routing(routing_plan, retriever, top_k=5)
+
+        # 4. Evidence-Based Reasoning (Phase 2B.2) over authoritative evidence
+        reasoning_result = reasoning_engine.reason(
+            query=ml_query.normalized_text,
+            classification=classification,
+            routing_plan=routing_plan,
+            retrieved_by_track=retrieved_by_track
+        )
+
+        # 5. Answer Localization (Phase 2C)
+        target_lang = (request.language or ml_query.detected_language or SupportedLanguage.ENGLISH.value).upper()
+        if target_lang not in {SupportedLanguage.HINDI.value, SupportedLanguage.KANNADA.value}:
+            target_lang = SupportedLanguage.ENGLISH.value
+
+        localized_reasoning, localization_meta = answer_localizer.localize(
+            reasoning=reasoning_result,
+            target_language=target_lang
+        )
+
+        # 6. Pharmaceutical baseline analyze (preserved 100% backward compatible)
+        result = rag.analyze(ml_query.normalized_text)
+
+        # 7. Add additive classification, routing, evidence, reasoning, and multilingual fields
+        result["query_classification"] = classification.to_dict()
+        result["routing_plan"] = routing_plan.to_dict()
+        result["reasoning"] = localized_reasoning.to_dict()
+        result["evidence"] = [e.to_dict() for e in localized_reasoning.evidence_items]
+        result["citations"] = [c.dict() if hasattr(c, "dict") else c for c in localized_reasoning.citations]
+        result["language"] = {
+            "detected": ml_query.detected_language,
+            "confidence": ml_query.confidence,
+            "script": ml_query.script,
+            "is_mixed": ml_query.is_mixed
+        }
+        result["normalized_query"] = ml_query.normalized_text
+        result["localization"] = localization_meta
+
+        logger.info(f"Analysis completed successfully (lang: {ml_query.detected_language} -> {target_lang})")
         return result
     except Exception as e:
-        logger.error(f"Analysis failed: {e}")
+        logger.error(f"Analysis failed: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
-
-
-class IngestResponse(BaseModel):
-    success: bool
-    message: str
-    documents_added: int
 
 
 @app.post("/ingest", response_model=IngestResponse)
 async def ingest_document(
     file: UploadFile = File(...),
-    doc_type: str = Form(default="patient_data"),
+    doc_type: str = Form(default="document"),
     description: Optional[str] = Form(default=None)
 ):
     """
-    Ingest new patient data or documents into the vector store
-    AWS Mapping: S3 upload + Lambda trigger for indexing
+    Ingest multi-format document (.txt, .csv, .json, .pdf, .docx)
+    with content hashing, deduplication, chunking, and SQLite+FAISS persistence.
     """
-    if not rag:
-        raise HTTPException(status_code=503, detail="RAG pipeline not initialized")
-    
-    # Validate file extension
     file_ext = os.path.splitext(file.filename)[1].lower()
-    if file_ext not in ALLOWED_EXTENSIONS:
+    allowed_exts = {'.txt', '.csv', '.json', '.pdf', '.docx'}
+    if file_ext not in allowed_exts:
         raise HTTPException(
-            status_code=400, 
-            detail=f"File type not supported. Allowed: {', '.join(ALLOWED_EXTENSIONS)}"
+            status_code=400,
+            detail=f"File type '{file_ext}' not supported. Allowed: {', '.join(allowed_exts)}"
         )
-    
+
     try:
-        # Read file content
         content = await file.read()
-        
-        # Handle different file types
-        if file_ext == '.pdf':
-            text_content = extract_pdf_text(content)
-        elif file_ext == '.docx':
-            text_content = extract_docx_text(content)
-        else:
-            text_content = content.decode('utf-8')
-        
-        if len(text_content.strip()) < 10:
-            raise HTTPException(status_code=400, detail="File content too short")
-        
-        documents = []
-        
-        if file_ext == '.csv':
-            # Parse CSV - each row becomes a document
-            reader = csv.DictReader(StringIO(text_content))
-            for i, row in enumerate(reader):
-                # Convert row to readable text
-                row_text = "\n".join([f"{k}: {v}" for k, v in row.items() if v])
-                if len(row_text.strip()) >= 10:
-                    documents.append({
-                        'content': row_text,
-                        'filename': f"{file.filename}_row_{i+1}",
-                        'type': doc_type,
-                        'description': description or f"CSV row {i+1} from {file.filename}"
-                    })
-        
-        elif file_ext == '.json':
-            # Parse JSON - handle array of records or single object
-            data = json.loads(text_content)
-            
-            if isinstance(data, list):
-                # Array of records
-                for i, item in enumerate(data):
-                    if isinstance(item, dict):
-                        item_text = "\n".join([f"{k}: {v}" for k, v in item.items()])
-                    else:
-                        item_text = str(item)
-                    
-                    if len(item_text.strip()) >= 10:
-                        documents.append({
-                            'content': item_text,
-                            'filename': f"{file.filename}_item_{i+1}",
-                            'type': doc_type,
-                            'description': description or f"JSON item {i+1} from {file.filename}"
-                        })
-            else:
-                # Single object
-                item_text = "\n".join([f"{k}: {v}" for k, v in data.items()])
-                documents.append({
-                    'content': item_text,
-                    'filename': file.filename,
-                    'type': doc_type,
-                    'description': description or f"User uploaded: {file.filename}"
-                })
-        
-        else:
-            # Plain text file - single document
-            documents.append({
-                'content': text_content,
-                'filename': file.filename,
-                'type': doc_type,
-                'description': description or f"User uploaded: {file.filename}"
-            })
-        
-        if not documents:
-            raise HTTPException(status_code=400, detail="No valid content found in file")
-        
-        # Add to vector store
-        rag.vector_store.add_documents(documents)
-        rag.vector_store.save_index()
-        
-        logger.info(f"Ingested {len(documents)} documents from: {file.filename}")
-        
-        return IngestResponse(
-            success=True,
-            message=f"Successfully ingested {len(documents)} record(s) from {file.filename}",
-            documents_added=len(documents)
+        res = ingestion_service.ingest_bytes(
+            content=content,
+            filename=file.filename,
+            doc_type=doc_type,
+            description=description
         )
-        
-    except json.JSONDecodeError:
-        raise HTTPException(status_code=400, detail="Invalid JSON format")
-    except UnicodeDecodeError:
-        raise HTTPException(status_code=400, detail="File must be UTF-8 encoded text")
+
+        if not res.success and res.status == "error":
+            raise HTTPException(status_code=400, detail=res.message)
+
+        return res
+
+    except HTTPException:
+        raise
     except Exception as e:
-        logger.error(f"Ingest failed: {e}")
+        logger.error(f"Ingest failed: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 
 class TextIngestRequest(BaseModel):
     content: str
-    doc_type: str = "patient_data"
+    doc_type: str = "text_note"
     title: Optional[str] = None
 
 
 @app.post("/ingest-text", response_model=IngestResponse)
 async def ingest_text(request: TextIngestRequest):
     """
-    Ingest patient data as plain text
+    Ingest direct text entry with deduplication and chunking.
     """
-    if not rag:
-        raise HTTPException(status_code=503, detail="RAG pipeline not initialized")
-    
     if len(request.content.strip()) < 10:
-        raise HTTPException(status_code=400, detail="Content too short (min 10 characters)")
-    
+        raise HTTPException(status_code=400, detail="Content too short (minimum 10 characters required)")
+
     try:
-        document = {
-            'content': request.content,
-            'filename': request.title or "user_text_input",
-            'type': request.doc_type,
-            'description': f"Text input: {request.title or 'Patient data'}"
-        }
-        
-        rag.vector_store.add_documents([document])
-        rag.vector_store.save_index()
-        
-        logger.info(f"Ingested text: {request.title or 'user input'}")
-        
-        return IngestResponse(
-            success=True,
-            message="Successfully added text data",
-            documents_added=1
+        res = ingestion_service.ingest_text(
+            content=request.content,
+            title=request.title,
+            doc_type=request.doc_type
         )
+        if not res.success and res.status == "error":
+            raise HTTPException(status_code=400, detail=res.message)
+        return res
+    except HTTPException:
+        raise
     except Exception as e:
-        logger.error(f"Text ingest failed: {e}")
+        logger.error(f"Text ingest failed: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get("/stats")
 def get_stats():
-    """Get vector store statistics"""
-    if not rag:
-        raise HTTPException(status_code=503, detail="RAG pipeline not initialized")
-    
-    return rag.vector_store.get_stats()
+    """Get vector store and SQLite metadata statistics"""
+    return vector_store.get_stats()
 
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run("main:app", host=config.API_HOST, port=config.API_PORT, reload=False)

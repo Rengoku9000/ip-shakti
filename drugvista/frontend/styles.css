@@ -1,0 +1,818 @@
+/* =============================================================================
+   IP-SAKTI Sahayak — Light Professional Theme (SIH 2026)
+   SAFE CSS: No broad selectors that match Streamlit internal elements.
+   Primary Green: #126B45 | Dark Green: #0B4F34 | Light Green: #EAF4EE
+   Background: #F7F8F5 | Card: #FFFFFF | Border: #DCE5DE
+============================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap');
+
+/* ==========================================================================
+   DESIGN TOKENS
+========================================================================== */
+:root {
+  --primary-green: #126B45;
+  --dark-green: #0B4F34;
+  --light-green: #EAF4EE;
+  --border-light: #DCE5DE;
+  --border-input: #CBD8CF;
+  --border-badge: #CFE1D5;
+  --soft-sage: #F0F5F1;
+  --bg-page: #F7F8F5;
+  --bg-card: #FFFFFF;
+  --text-main: #17211B;
+  --text-body: #34423A;
+  --text-secondary: #526057;
+  --text-subtle: #68756D;
+  --info-blue: #2563A6;
+  --info-blue-bg: #EEF3F7;
+  --info-blue-text: #36566F;
+  --warning-amber: #A66A00;
+  --warning-amber-bg: #FFF8EB;
+  --error-red: #B42318;
+  --shadow-card: 0 2px 10px rgba(23, 33, 27, 0.05);
+  --shadow-hover: 0 4px 14px rgba(23, 33, 27, 0.08);
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-card: 14px;
+  --radius-pill: 9999px;
+}
+
+/* ==========================================================================
+   BASE — Only target html/body directly, NOT Streamlit internal classes
+========================================================================== */
+html, body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  background-color: var(--bg-page) !important;
+}
+
+/* App container background */
+.stApp {
+  background-color: var(--bg-page) !important;
+}
+
+[data-testid="stAppViewContainer"] {
+  background-color: var(--bg-page) !important;
+}
+
+/* Main content padding — comfortable width, fills available space beside sidebar */
+.main .block-container {
+  max-width: 1400px !important;
+  padding-top: 1.5rem !important;
+  padding-bottom: 2.5rem !important;
+  padding-left: 2.5rem !important;
+  padding-right: 2.5rem !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Hide only specific surplus Streamlit chrome */
+#MainMenu { visibility: hidden !important; }
+footer { visibility: hidden !important; }
+.stDeployButton { display: none !important; }
+
+/* Transparent Streamlit header bar */
+header[data-testid="stHeader"] {
+  background-color: transparent !important;
+}
+
+/* ==========================================================================
+   SIDEBAR — Native Streamlit sidebar, light white theme
+========================================================================== */
+section[data-testid="stSidebar"] {
+  background-color: #FFFFFF !important;
+  border-right: 1px solid var(--border-light) !important;
+}
+
+[data-testid="stSidebar"] hr {
+  border-color: var(--border-light) !important;
+  margin: 12px 0 !important;
+}
+
+/* ==========================================================================
+   SIDEBAR RADIO NAVIGATION — Style as nav items, hide radio circles
+========================================================================== */
+
+/* Each radio option label — styled as nav row */
+[data-testid="stSidebar"] [data-testid="stRadio"] label {
+  display: flex !important;
+  align-items: center !important;
+  padding: 8px 12px !important;
+  margin-bottom: 2px !important;
+  border-radius: 8px !important;
+  border-left: 3px solid transparent !important;
+  cursor: pointer !important;
+  transition: background-color 0.15s ease !important;
+  background-color: transparent !important;
+  min-height: unset !important;
+}
+
+/* Nav text — force readable dark color */
+[data-testid="stSidebar"] [data-testid="stRadio"] label p {
+  color: #34423A !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
+/* Hide the native radio circle indicator */
+[data-testid="stSidebar"] [data-testid="stRadio"] input[type="radio"] {
+  position: absolute !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Also hide the visual radio dot (BaseWeb span element) */
+[data-testid="stSidebar"] [data-testid="stRadio"] label > div:first-of-type {
+  display: none !important;
+}
+
+/* Hover state */
+[data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
+  background-color: #F0F5F1 !important;
+  border-left-color: #B8CCBD !important;
+}
+[data-testid="stSidebar"] [data-testid="stRadio"] label:hover p {
+  color: #0B4F34 !important;
+}
+
+/* Active / checked state */
+[data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) {
+  background-color: #EAF4EE !important;
+  border-left: 3px solid #126B45 !important;
+}
+[data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) p {
+  color: #0B4F34 !important;
+  font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   SIDEBAR LANGUAGE SELECTBOX — Force light styling
+========================================================================== */
+[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] {
+  background-color: #FFFFFF !important;
+  border-color: #C9D8CF !important;
+  border-radius: 8px !important;
+}
+[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] > div {
+  background-color: #FFFFFF !important;
+  color: #34423A !important;
+}
+[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] span,
+[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] div {
+  color: #34423A !important;
+  background-color: #FFFFFF !important;
+}
+[data-testid="stSidebar"] [data-testid="stSelectbox"] svg {
+  fill: #526057 !important;
+}
+
+/* ==========================================================================
+   SIDEBAR METRICS (Corpus stats)
+========================================================================== */
+[data-testid="stSidebar"] [data-testid="stMetricValue"] {
+  color: #0B4F34 !important;
+  font-weight: 700 !important;
+  font-size: 1.6rem !important;
+}
+[data-testid="stSidebar"] [data-testid="stMetricLabel"] {
+  color: #68756D !important;
+  font-size: 0.78rem !important;
+}
+
+/* ==========================================================================
+   SIDEBAR COLLAPSE/EXPAND CONTROLS — Always clickable, always visible
+========================================================================== */
+[data-testid="stSidebarCollapseButton"] {
+  color: var(--dark-green) !important;
+}
+[data-testid="stSidebarCollapseButton"]:hover {
+  background-color: var(--light-green) !important;
+}
+[data-testid="collapsedControl"] {
+  color: var(--dark-green) !important;
+}
+[data-testid="collapsedControl"]:hover {
+  background-color: var(--light-green) !important;
+}
+
+/* ==========================================================================
+   SIDEBAR BRANDING (Custom HTML classes injected by app.py)
+========================================================================== */
+.sidebar-brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-light);
+}
+.sidebar-logo-icon {
+  width: 38px;
+  height: 38px;
+  background: var(--light-green);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border: 1px solid var(--border-badge);
+  flex-shrink: 0;
+}
+.sidebar-brand-title {
+  color: var(--dark-green) !important;
+  font-size: 1.05rem;
+  font-weight: 800;
+  display: block;
+  line-height: 1.2;
+}
+.sidebar-brand-subtitle {
+  color: var(--text-subtle) !important;
+  font-size: 0.76rem;
+  font-weight: 500;
+  display: block;
+  margin-top: 2px;
+}
+.sidebar-section-header {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-subtle) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.sidebar-info-box {
+  margin-top: 18px;
+  padding: 10px 12px;
+  background: var(--soft-sage);
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+.sidebar-info-box strong {
+  color: var(--dark-green) !important;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   MAIN TOP HEADER
+========================================================================== */
+.sakti-top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  margin-bottom: 22px;
+  box-shadow: var(--shadow-card);
+}
+.sakti-brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.sakti-logo-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--light-green);
+  border: 1px solid var(--border-badge);
+  color: var(--dark-green);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.sakti-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+.sakti-brand-title {
+  font-size: 1.45rem !important;
+  font-weight: 700 !important;
+  color: var(--dark-green) !important;
+  line-height: 1.15 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.sakti-brand-subtitle {
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  color: var(--text-secondary) !important;
+  margin: 3px 0 0 0 !important;
+}
+.sakti-sih-tag {
+  text-align: right;
+  border-left: 2px solid var(--border-light);
+  padding-left: 18px;
+}
+.sakti-sih-badge {
+  display: inline-block;
+  background: var(--light-green);
+  color: var(--dark-green) !important;
+  border: 1px solid var(--border-badge);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 3px;
+}
+.sakti-sih-caption {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-main) !important;
+}
+
+/* ==========================================================================
+   HERO SECTION
+========================================================================== */
+.sakti-hero-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  padding: 34px 32px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.sakti-hero-content { max-width: 720px; }
+.sakti-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--light-green);
+  color: var(--dark-green) !important;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.76rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  border: 1px solid var(--border-badge);
+}
+.sakti-hero-title {
+  font-size: 2.2rem !important;
+  font-weight: 800 !important;
+  color: var(--dark-green) !important;
+  line-height: 1.15 !important;
+  margin-bottom: 10px !important;
+}
+.sakti-hero-subhead {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-main) !important;
+  margin-bottom: 10px;
+}
+.sakti-hero-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary) !important;
+  line-height: 1.55;
+  margin-bottom: 18px;
+}
+.sakti-hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.sakti-pill {
+  background: var(--soft-sage);
+  border: 1px solid var(--border-light);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-body) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ==========================================================================
+   FEATURE CARDS
+========================================================================== */
+.feature-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: var(--shadow-card);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.feature-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-input);
+  box-shadow: var(--shadow-hover);
+}
+.feature-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--light-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border: 1px solid var(--border-badge);
+  margin-bottom: 12px;
+}
+.feature-card-title {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: var(--dark-green) !important;
+  margin-bottom: 6px !important;
+}
+.feature-card-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary) !important;
+  line-height: 1.45;
+  margin-bottom: 12px;
+  flex-grow: 1;
+}
+
+/* ==========================================================================
+   QUERY SCREEN HEADER
+========================================================================== */
+.query-screen-header { margin-bottom: 16px; }
+.query-screen-title {
+  font-size: 1.45rem !important;
+  font-weight: 700 !important;
+  color: var(--dark-green) !important;
+  margin-bottom: 4px !important;
+}
+.query-screen-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-secondary) !important;
+}
+
+/* Streamlit native inputs — light theme */
+[data-testid="stTextArea"] textarea {
+  background-color: #FFFFFF !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-input) !important;
+  border-radius: 10px !important;
+}
+[data-testid="stTextInput"] input {
+  background-color: #FFFFFF !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-input) !important;
+  border-radius: 8px !important;
+}
+
+/* ==========================================================================
+   BUTTONS
+========================================================================== */
+div.stButton > button[kind="secondary"] {
+  background-color: var(--light-green) !important;
+  color: var(--dark-green) !important;
+  border: 1px solid var(--border-badge) !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-pill) !important;
+  font-size: 0.8rem !important;
+}
+div.stButton > button[kind="secondary"]:hover {
+  background-color: #DCEDE3 !important;
+  color: var(--dark-green) !important;
+}
+div.stButton > button[kind="primary"] {
+  background-color: var(--primary-green) !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  border: 1px solid var(--dark-green) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 2px 6px rgba(18, 107, 69, 0.2) !important;
+  transition: all 0.2s ease !important;
+}
+div.stButton > button[kind="primary"]:hover {
+  background-color: var(--dark-green) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ==========================================================================
+   ANALYSIS CHIPS CARD
+========================================================================== */
+.analysis-chips-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-card);
+}
+.analysis-chips-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--dark-green) !important;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.chips-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+}
+.analysis-chip-item {
+  background: var(--soft-sage);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+.chip-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-subtle) !important;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  letter-spacing: 0.03em;
+}
+.chip-value {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--dark-green) !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   ANSWER CARD & KEY POINTS
+========================================================================== */
+.sakti-answer-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-card);
+}
+.answer-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+}
+.answer-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dark-green) !important;
+}
+.answer-badge-sources {
+  background: var(--light-green);
+  color: var(--dark-green) !important;
+  border: 1px solid var(--border-badge);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+.evidence-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.status-supported { background: var(--light-green); color: var(--dark-green) !important; border: 1px solid var(--border-badge); }
+.status-partial { background: var(--warning-amber-bg); color: var(--warning-amber) !important; border: 1px solid #F6E0B5; }
+.status-review { background: #FFF2E8; color: #B24000 !important; border: 1px solid #FCD3B6; }
+.status-insufficient { background: var(--soft-sage); color: var(--text-secondary) !important; border: 1px solid var(--border-light); }
+
+.fact-item-box {
+  background: #F9FCFA;
+  border: 1px solid var(--border-light);
+  border-left: 3px solid var(--primary-green);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+}
+.fact-badge {
+  display: inline-block;
+  background: var(--light-green);
+  color: var(--dark-green) !important;
+  border: 1px solid var(--border-badge);
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  letter-spacing: 0.04em;
+}
+.interp-item-box {
+  background: #F9FBFC;
+  border: 1px solid var(--border-light);
+  border-left: 3px solid #36566F;
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+}
+.interp-badge {
+  display: inline-block;
+  background: var(--info-blue-bg);
+  color: var(--info-blue-text) !important;
+  border: 1px solid #D4E0E8;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  letter-spacing: 0.04em;
+}
+.fact-text {
+  font-size: 0.88rem;
+  color: var(--text-main) !important;
+  line-height: 1.5;
+}
+.citation-anchor-pill {
+  display: inline-block;
+  background: var(--soft-sage);
+  color: var(--dark-green) !important;
+  border: 1px solid var(--border-badge);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-left: 4px;
+  font-family: monospace;
+}
+
+.key-points-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  padding: 18px;
+  box-shadow: var(--shadow-card);
+  height: 100%;
+}
+.key-points-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark-green) !important;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 8px;
+}
+.key-point-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  align-items: flex-start;
+}
+.key-point-num {
+  background: var(--light-green);
+  color: var(--primary-green) !important;
+  font-size: 0.76rem;
+  font-weight: 800;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.key-point-text {
+  font-size: 0.84rem;
+  color: var(--text-body) !important;
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   SOURCES PAGE
+========================================================================== */
+.source-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  padding: 18px 22px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-card);
+  transition: all 0.2s ease;
+}
+.source-card:hover { border-color: var(--border-input); box-shadow: var(--shadow-hover); }
+.source-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+.source-card-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: var(--light-green);
+  color: var(--dark-green) !important;
+  font-weight: 800;
+  font-size: 0.8rem;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.source-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.source-main-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main) !important;
+}
+.badge-authority {
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.badge-primary-law { background: var(--light-green); color: var(--dark-green) !important; border: 1px solid var(--border-badge); }
+.badge-treaty { background: var(--info-blue-bg); color: var(--info-blue) !important; border: 1px solid #D4E0E8; }
+.badge-official-secondary { background: var(--soft-sage); color: var(--text-secondary) !important; border: 1px solid var(--border-light); }
+.badge-status-inforce { background: var(--soft-sage); color: var(--text-secondary) !important; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 4px; border: 1px solid var(--border-light); }
+.badge-status-pending { background: var(--warning-amber-bg); color: var(--warning-amber) !important; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 4px; border: 1px solid #F6E0B5; }
+.source-desc-snippet { font-size: 0.84rem; color: var(--text-secondary) !important; line-height: 1.5; margin: 8px 0 12px 0; }
+.source-meta-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.76rem;
+  color: var(--text-subtle) !important;
+  border-top: 1px solid var(--border-light);
+  padding-top: 10px;
+}
+.source-link-btn { color: var(--primary-green) !important; text-decoration: none; font-weight: 700; font-size: 0.78rem; display: inline-flex; align-items: center; gap: 4px; }
+.source-link-btn:hover { text-decoration: underline; color: var(--dark-green) !important; }
+
+/* ==========================================================================
+   MULTILINGUAL TABS & CARDS
+========================================================================== */
+[data-testid="stTabs"] [data-baseweb="tab-list"] {
+  background-color: var(--soft-sage) !important;
+  border-radius: 10px !important;
+  padding: 4px !important;
+  gap: 6px !important;
+}
+[data-testid="stTabs"] [data-baseweb="tab"] {
+  background-color: transparent !important;
+  color: var(--text-body) !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  padding: 8px 16px !important;
+  border: none !important;
+}
+[data-testid="stTabs"] [aria-selected="true"] {
+  background-color: var(--primary-green) !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+}
+.lang-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  padding: 22px;
+  box-shadow: var(--shadow-card);
+}
+.lang-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+}
+.lang-card-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--dark-green) !important;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.lang-card-body { font-size: 0.9rem; line-height: 1.65; color: var(--text-main) !important; }

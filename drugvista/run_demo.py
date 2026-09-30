@@ -36,8 +36,12 @@ def main():
     print("🧬 DRUGVISTA Demo Launcher")
     print("==========================")
     
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    storage_index = os.path.join(base_dir, "storage", "vector_index.faiss")
+    legacy_index = os.path.join(base_dir, "backend", "vector_index.faiss")
+    
     # Check if setup was run
-    if not os.path.exists("backend/vector_index.faiss"):
+    if not os.path.exists(storage_index) and not os.path.exists(legacy_index):
         print("❌ Vector index not found. Please run setup first:")
         print("   python setup.py")
         return

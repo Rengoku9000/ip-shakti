@@ -1,0 +1,32 @@
+=== SOURCE METADATA ===
+source_id: tkdl_public_scope_and_defensive_prior_art_advisory
+title: Traditional Knowledge Digital Library (TKDL) - Public Purpose, Defensive Protection Framework and Access Policy Advisory
+short_title: TKDL Defensive Framework Advisory
+authority: Council of Scientific and Industrial Research & Ministry of Ayush, Government of India
+source_type: GOVERNMENT_PUBLICATION
+authority_level: OFFICIAL_SECONDARY
+jurisdiction: INDIA
+language: en
+version: CSIR-TKDL Public Policy Reference 2022
+publication_date: 2022-08-20
+effective_from: 2022-08-20
+legal_status: IN_FORCE
+effective_status: IN_FORCE
+source_url: https://www.tkdl.res.in/tkdl/langdefault/common/Abouttkdl.asp
+status_checked_at: 2026-09-30T14:40:00Z
+verification_status: official_secondary
+=== END METADATA ===
+
+[SECTION: Section 1]
+Section 1 - Establishment, Legal Purpose and Defensive Protection Role of TKDL:
+The Traditional Knowledge Digital Library (TKDL) is a pioneering Indian initiative co-managed by the Council of Scientific and Industrial Research (CSIR) and the Ministry of Ayush. The primary objective of the TKDL is defensive protection: to systematically document traditional knowledge from classical Indian texts (including Ayurveda, Unani, Siddha, and Sowa Rigpa) in international patent classification language (Traditional Knowledge Resource Classification - TKRC) across five international languages (English, French, German, Japanese, Spanish) to prevent wrongful patenting and biopiracy of Indian traditional knowledge in global patent offices.
+
+[SECTION: Section 2]
+Section 2 - Confidentiality and International Access Agreement Structure:
+Access to the full TKDL database is subject to strict non-disclosure access agreements entered into between CSIR and major international patent offices (including the European Patent Office, United States Patent and Trademark Office, Japan Patent Office, Canadian Intellectual Property Office, and Indian Patent Office). The full repository is not a public commercial search database. External entities and users do not possess direct access to full TKDL internal transcripts, translations, or classification files.
+
+[SECTION: Section 3]
+Section 3 - Regulatory and IP Advisory Protocol for Traditional Knowledge Queries:
+1. Defensive Reference Status: For intellectual property evaluation, TKDL serves as proof that classical Ayurvedic formulations and single herb indications documented in authoritative texts (such as Charaka Samhita, Sushruta Samhita, and AFI) constitute published prior art accessible to patent examiners globally under IPC Subclass A61K 36/00.
+2. Inventions claiming mere combinations or straightforward adaptations of known herbal formulations are subject to rejection under Section 3(p) of the Indian Patents Act, 1970 and international novelty/inventive step standards.
+3. System Guardrail & Abstention Protocol: If an inquiry requests proprietary or restricted TKDL dossier records, search transcripts, or direct verification from non-public TKDL files, the AI system must abstain and escalate to formal channels (CSIR-TKDL Unit or registered patent agents) rather than simulate or fabricate confidential search results.

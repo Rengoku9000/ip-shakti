@@ -1,0 +1,41 @@
+=== SOURCE METADATA ===
+source_id: ayush_pharmacopoeial_standards_guidance
+title: Ministry of Ayush Guidance on Pharmacopoeial Standards and Regulatory Quality Parameters for Ayurvedic Formulations
+short_title: Ayush Pharmacopoeial Guidance (PCIM&H)
+authority: Pharmacopoeia Commission for Indian Medicine & Homoeopathy, Ministry of Ayush, Government of India
+source_type: OFFICIAL_GUIDANCE
+authority_level: OFFICIAL_SECONDARY
+jurisdiction: INDIA
+language: en
+version: PCIM&H Guidance Reference 2021
+publication_date: 2021-03-15
+effective_from: 2021-03-15
+legal_status: IN_FORCE
+effective_status: IN_FORCE
+source_url: https://pcimh.gov.in/
+status_checked_at: 2026-09-30T14:40:00Z
+verification_status: official_secondary
+=== END METADATA ===
+
+[SECTION: Section 1]
+Section 1 - Legal Status of Pharmacopoeial Standards for ASU Drugs:
+Under the Second Schedule to the Drugs and Cosmetics Act, 1940, the standards for Ayurvedic, Siddha and Unani drugs are those prescribed in the Ayurvedic Pharmacopoeia of India (API), Siddha Pharmacopoeia of India (SPI), and Unani Pharmacopoeia of India (UPI). Any medicine manufactured, sold, or distributed under the ASU drug category must strictly conform to these official monographs regarding identity, purity, and strength.
+
+[SECTION: Section 2]
+Section 2 - Classical vs Patent/Proprietary Classification Criteria:
+(a) Classical Formulations (Shastrashokta): Must be prepared strictly in accordance with the formula, process, and indications recorded in the authoritative books listed in the First Schedule to the Drugs and Cosmetics Act. Classical formulations are governed by long-standing traditional use and are exempt from clinical trial requirements for license grant under Rule 158-B.
+(b) Patent or Proprietary (P&P) ASU Medicines: Formulations that contain ingredients mentioned in the First Schedule books, but have altered compositions, novel ratios, new delivery forms, or specific extract concentrations. P&P medicines require safety documentation, acute toxicity data, and proof of concept/clinical trial reports depending on the degree of modification from classical recipes.
+
+[SECTION: Section 3]
+Section 3 - Quality Parameters for Plant Materials and Formulations:
+All Ayurvedic raw materials and finished products must meet the monograph limits established by PCIM&H:
+1. Foreign matter: Not more than limits specified in individual monographs.
+2. Total Ash, Acid-insoluble Ash, and Water-soluble Ash.
+3. Extractive values: Alcohol-soluble extractive and Water-soluble extractive.
+4. Heavy metal limits: Lead (max 10 ppm), Arsenic (max 3 ppm), Cadmium (max 0.3 ppm), Mercury (max 1 ppm).
+5. Microbial contamination limits and test for specific pathogens (E. coli, Salmonella, S. aureus, Pseudomonas).
+6. Pesticide residues and aflatoxins limits (B1, B2, G1, G2).
+
+[SECTION: Section 4]
+Section 4 - Manufacturing Compliance with Schedule T (Good Manufacturing Practices):
+Manufacturers of Ayurvedic medicines must comply with Schedule T Good Manufacturing Practices (GMP) of the Drugs and Cosmetics Rules, 1945. This requires certified manufacturing premises, qualified technical staff (Ayurvedic expert and analytical chemist), validated standard operating procedures (SOPs), batch manufacturing records, in-house quality control laboratory, and standard packaging materials.

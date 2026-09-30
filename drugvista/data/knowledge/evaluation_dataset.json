@@ -1,0 +1,212 @@
+{
+  "description": "Ground truth evaluation dataset for Phase 2A Knowledge Retrieval (SIH26045 IP-SAKTI Sahayak)",
+  "total_queries": 25,
+  "categories": [
+    "Patent / IP Law",
+    "Ayurveda Regulatory Framework",
+    "Access & Benefit Sharing (ABS)",
+    "International Treaties & Conventions"
+  ],
+  "queries": [
+    {
+      "id": "eval_01",
+      "category": "Patent / IP Law",
+      "query": "What does Section 3(p) say about traditional knowledge patentability?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["patents_act_1970"],
+      "expected_anchor_substring": "Section 3(p)"
+    },
+    {
+      "id": "eval_02",
+      "category": "Patent / IP Law",
+      "query": "Are inventions that are mere admixtures or aggregations of known properties patentable under Section 3(e)?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["patents_act_1970"],
+      "expected_anchor_substring": "Section 3"
+    },
+    {
+      "id": "eval_03",
+      "category": "Patent / IP Law",
+      "query": "What is the requirement for disclosing the biological source in a patent specification under Section 10(4)?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["patents_act_1970"],
+      "expected_anchor_substring": "Section 10"
+    },
+    {
+      "id": "eval_04",
+      "category": "Patent / IP Law",
+      "query": "Is the mere discovery of a new form of a known substance patentable without enhanced efficacy under Section 3(d)?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["patents_act_1970"],
+      "expected_anchor_substring": "Section 3(d)"
+    },
+    {
+      "id": "eval_05",
+      "category": "Patent / IP Law",
+      "query": "Can an invention contrary to public order or morality or prejudicial to health be patented under Section 3(b)?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["patents_act_1970"],
+      "expected_anchor_substring": "Section 3(b)"
+    },
+    {
+      "id": "eval_06",
+      "category": "Patent / IP Law",
+      "query": "Can medicinal, curative or therapeutic treatment processes for human beings be patented under Section 3(i)?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["patents_act_1970"],
+      "expected_anchor_substring": "Section 3(i)"
+    },
+    {
+      "id": "eval_07",
+      "category": "Ayurveda Regulatory Framework",
+      "query": "What is the legal definition of Ayurvedic, Siddha or Unani drug under Section 33EEB?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["drugs_cosmetics_act_asu_framework"],
+      "expected_anchor_substring": "Section 33EEB"
+    },
+    {
+      "id": "eval_08",
+      "category": "Ayurveda Regulatory Framework",
+      "query": "What are the licensing requirements and safety evidence for Ayurveda proprietary medicines under Rule 158-B?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["drugs_cosmetics_act_asu_framework"],
+      "expected_anchor_substring": "Rule 158-B"
+    },
+    {
+      "id": "eval_09",
+      "category": "Ayurveda Regulatory Framework",
+      "query": "Which classical texts are recognized as authoritative treatises under Schedule I of the Drugs and Cosmetics Act?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["drugs_cosmetics_act_asu_framework"],
+      "expected_anchor_substring": "Schedule I"
+    },
+    {
+      "id": "eval_10",
+      "category": "Ayurveda Regulatory Framework",
+      "query": "What standards must Ayurvedic single drugs comply with according to the Ayurvedic Pharmacopoeia of India (API)?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["ayush_pharmacopoeial_standards_guidance"],
+      "expected_anchor_substring": "Section 1"
+    },
+    {
+      "id": "eval_11",
+      "category": "Ayurveda Regulatory Framework",
+      "query": "How are compound formulations and classical recipes standardized in the Ayurvedic Formulary of India (AFI)?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["drugs_cosmetics_act_asu_framework", "ayush_pharmacopoeial_standards_guidance"],
+      "expected_anchor_substring": "Schedule I"
+    },
+    {
+      "id": "eval_12",
+      "category": "Ayurveda Regulatory Framework",
+      "query": "What is the role of Pharmacopoeia Commission for Indian Medicine & Homoeopathy (PCIM&H)?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["ayush_pharmacopoeial_standards_guidance"],
+      "expected_anchor_substring": "Section"
+    },
+    {
+      "id": "eval_13",
+      "category": "Ayurveda Regulatory Framework",
+      "query": "What is the public scope and defensive prior art function of the Traditional Knowledge Digital Library (TKDL)?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["tkdl_public_scope_and_defensive_prior_art_advisory"],
+      "expected_anchor_substring": "Section 1"
+    },
+    {
+      "id": "eval_14",
+      "category": "Ayurveda Regulatory Framework",
+      "query": "What is the abstention guardrail when a user requests confidential or non-public TKDL database records?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["tkdl_public_scope_and_defensive_prior_art_advisory"],
+      "expected_anchor_substring": "Section 3"
+    },
+    {
+      "id": "eval_15",
+      "category": "Access & Benefit Sharing (ABS)",
+      "query": "Who must obtain prior approval from the National Biodiversity Authority (NBA) under Section 3 of the Biological Diversity Act?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["biological_diversity_act_2002"],
+      "expected_anchor_substring": "Section 3"
+    },
+    {
+      "id": "eval_16",
+      "category": "Access & Benefit Sharing (ABS)",
+      "query": "Can results of research on Indian biological resources be transferred to foreigners without approval under Section 4?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["biological_diversity_act_2002"],
+      "expected_anchor_substring": "Section 4"
+    },
+    {
+      "id": "eval_17",
+      "category": "Access & Benefit Sharing (ABS)",
+      "query": "What approval is required before applying for a patent based on biological resources under Section 6?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["biological_diversity_act_2002"],
+      "expected_anchor_substring": "Section 6"
+    },
+    {
+      "id": "eval_18",
+      "category": "Access & Benefit Sharing (ABS)",
+      "query": "When must Indian citizens give prior intimation to the State Biodiversity Board under Section 7?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["biological_diversity_act_2002"],
+      "expected_anchor_substring": "Section 7"
+    },
+    {
+      "id": "eval_19",
+      "category": "Access & Benefit Sharing (ABS)",
+      "query": "How does the National Biodiversity Authority determine equitable benefit sharing under Section 21?",
+      "jurisdiction": "INDIA",
+      "expected_sources": ["biological_diversity_act_2002"],
+      "expected_anchor_substring": "Section 21"
+    },
+    {
+      "id": "eval_20",
+      "category": "International Treaties & Conventions",
+      "query": "What is the mandatory patent disclosure requirement for genetic resources under Article 3 of the WIPO GRATK Treaty?",
+      "jurisdiction": "INTERNATIONAL",
+      "expected_sources": ["wipo_gratk_treaty_2024"],
+      "expected_anchor_substring": "Article 3"
+    },
+    {
+      "id": "eval_21",
+      "category": "International Treaties & Conventions",
+      "query": "What are the exceptions and exclusions from patent disclosure under Article 4 of the WIPO GRATK Treaty?",
+      "jurisdiction": "INTERNATIONAL",
+      "expected_sources": ["wipo_gratk_treaty_2024"],
+      "expected_anchor_substring": "Article 4"
+    },
+    {
+      "id": "eval_22",
+      "category": "International Treaties & Conventions",
+      "query": "What sanctions or remedies apply if patent disclosure obligations are not met under Article 5 of the WIPO GRATK Treaty?",
+      "jurisdiction": "INTERNATIONAL",
+      "expected_sources": ["wipo_gratk_treaty_2024"],
+      "expected_anchor_substring": "Article 5"
+    },
+    {
+      "id": "eval_23",
+      "category": "International Treaties & Conventions",
+      "query": "What are the fair and equitable benefit-sharing requirements under Article 5 of the Nagoya Protocol?",
+      "jurisdiction": "INTERNATIONAL",
+      "expected_sources": ["nagoya_protocol_abs"],
+      "expected_anchor_substring": "Article 5"
+    },
+    {
+      "id": "eval_24",
+      "category": "International Treaties & Conventions",
+      "query": "How does Article 7 of the Nagoya Protocol protect access to traditional knowledge associated with genetic resources?",
+      "jurisdiction": "INTERNATIONAL",
+      "expected_sources": ["nagoya_protocol_abs"],
+      "expected_anchor_substring": "Article 7"
+    },
+    {
+      "id": "eval_25",
+      "category": "International Treaties & Conventions",
+      "query": "What compliance measures must parties take regarding access to genetic resources under Article 15 and 16 of the Nagoya Protocol?",
+      "jurisdiction": "INTERNATIONAL",
+      "expected_sources": ["nagoya_protocol_abs"],
+      "expected_anchor_substring": "Article 1"
+    }
+  ]
+}

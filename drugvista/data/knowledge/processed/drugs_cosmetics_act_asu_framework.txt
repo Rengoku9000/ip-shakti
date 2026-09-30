@@ -1,0 +1,59 @@
+=== SOURCE METADATA ===
+source_id: drugs_cosmetics_act_asu_framework
+title: Drugs and Cosmetics Act, 1940 & Rules 1945 - Provisions Relating to Ayurvedic, Siddha and Unani Drugs
+short_title: Drugs & Cosmetics Act (ASU Framework)
+authority: Ministry of Ayush / Central Drugs Standard Control Organization, Government of India
+source_type: STATUTE
+authority_level: PRIMARY
+jurisdiction: INDIA
+language: en
+version: Act 23 of 1940 & Rules 1945 (Consolidated Provisions for ASU Drugs under Chapter IV-A & Part XVI-A)
+publication_date: 1940-04-10
+effective_from: 1940-04-10
+source_url: https://ayush.gov.in/resources/pdf/quality_standards/Drugs-and-Cosmetics-Act-Rules.pdf
+legal_status: IN_FORCE
+effective_status: IN_FORCE
+status_checked_at: 2026-09-30T14:40:00Z
+verification_status: verified_current
+=== END METADATA ===
+
+[SECTION: Section 3(a)]
+Section 3(a) - Definition of Ayurvedic, Siddha or Unani (ASU) Drug:
+"Ayurvedic, Siddha or Unani drug" includes all medicines intended for internal or external use for or in the diagnosis, treatment, mitigation or prevention of disease or disorder in human beings or animals, and manufactured exclusively in accordance with the formulae described in the authoritative books of Ayurvedic, Siddha and Unani Tibb systems of medicine, specified in the First Schedule.
+
+[SECTION: Section 33EEB]
+Section 33EEB - Definition of Patent or Proprietary Medicine for ASU Drugs:
+"patent or proprietary medicine", in relation to Ayurvedic, Siddha or Unani Tibb systems of medicine, means all formulations containing only such ingredients mentioned in the formulae described in the authoritative books of Ayurveda, Siddha or Unani Tibb systems of medicine specified in the First Schedule, but does not include a medicine which is administered by parenteral route and also a formulation included in the authoritative books as specified in clause (a).
+
+[SECTION: Rule 158-B]
+Rule 158-B - Guidelines for issue of license with respect to Ayurvedic, Siddha or Unani drugs:
+I. For Classical Ayurvedic, Siddha and Unani Drugs (Shastrashokta):
+(A) Medicines manufactured strictly in accordance with the authoritative classical books specified in the First Schedule to the Drugs and Cosmetics Act, 1940:
+Proof of safety and effectiveness is established by historical usage referenced in authoritative classical texts. Safety and efficacy studies are not required for grant of manufacturing license, provided ingredients, therapeutic indications, dosage form and methods of preparation conform to the classical text or the Ayurvedic Pharmacopoeia of India (API) / Ayurvedic Formulary of India (AFI).
+
+[SECTION: Rule 158-B(II)]
+Rule 158-B(II) - Guidelines for Patent or Proprietary ASU Medicines:
+(B) Patent or Proprietary Medicines:
+(1) For ASU medicines containing ingredients mentioned in the authoritative books:
+- Evidence of safety: Published scientific literature or textual references regarding safety of ingredients.
+- Evidence of effectiveness: Textual references, published research papers, or proof of concept studies for the claimed indication.
+(2) For ASU medicines containing extract of medicinal plant(s) / modified forms:
+- Safety data: Acute toxicity studies (oral LD50) conducted in accordance with OECD or Ayush guidelines.
+- Efficacy data: Documented clinical trials or pilot clinical studies demonstrating therapeutic benefit for the specific proposed indication.
+
+[SECTION: Schedule I]
+First Schedule - Authoritative Books of Ayurvedic System:
+The books referred to in Section 3(a) of the Act include:
+1. Charaka Samhita (Agnivesha / Dridhabala)
+2. Sushruta Samhita (Sushruta / Nagarjuna)
+3. Astanga Hridaya (Vagbhata)
+4. Astanga Samgraha (Vagbhata)
+5. Sharangadhara Samhita (Sharangadhara)
+6. Bhavaprakasha (Bhavamishra)
+7. Madhava Nidana (Madhavakara)
+8. Bhaishajya Ratnavali (Govinda Das)
+9. Sahasrayogam
+10. Rasaratna Samucchaya
+11. Ayurvedic Formulary of India (AFI, Part I, II & III)
+12. Ayurvedic Pharmacopoeia of India (API, Part I & II)
+Any formulation prepared exactly according to the recipes in these texts constitutes a classical formulation under law.

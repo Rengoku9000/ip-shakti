@@ -4,7 +4,11 @@ Works without OpenAI API key for hackathon demonstration
 """
 import sys
 import os
-sys.path.append("backend")
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+backend_dir = os.path.join(script_dir, "backend")
+if backend_dir not in sys.path:
+    sys.path.insert(0, backend_dir)
 
 from vector_store import VectorStore
 import json
@@ -12,16 +16,7 @@ import json
 class OfflineRAGPipeline:
     def __init__(self):
         """Initialize offline RAG pipeline"""
-        # Change to backend directory to find the index files
-        original_dir = os.getcwd()
-        try:
-            os.chdir("backend")
-            self.vector_store = VectorStore()
-            os.chdir(original_dir)
-        except:
-            # If already in backend directory
-            self.vector_store = VectorStore()
-        
+        self.vector_store = VectorStore()
         stats = self.vector_store.get_stats()
         print(f"✅ Loaded vector store with {stats['total_documents']} documents")
     
@@ -87,7 +82,7 @@ class OfflineRAGPipeline:
         evidence_files = [doc.get('filename', f'doc_{i}') for i, doc in enumerate(docs[:3])]
         
         # Generate explanation
-        explanation = self._generate_explanation(query, docs, viability, risks, market_signal, recommendation)
+        explanation = self._generate_explanation(query, docs, viability, risks, market_signal, recommendation, confidence)
         
         return {
             "clinical_viability": viability,
@@ -99,7 +94,7 @@ class OfflineRAGPipeline:
             "explanation": explanation
         }
     
-    def _generate_explanation(self, query, docs, viability, risks, market_signal, recommendation):
+    def _generate_explanation(self, query, docs, viability, risks, market_signal, recommendation, confidence):
         """Generate human-readable explanation"""
         
         doc_types = [doc.get('type', 'unknown') for doc in docs]

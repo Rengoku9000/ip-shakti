@@ -1,0 +1,69 @@
+=== SOURCE METADATA ===
+source_id: wipo_gratk_treaty_2024
+title: WIPO Treaty on Intellectual Property, Genetic Resources and Associated Traditional Knowledge (2024)
+short_title: WIPO GRATK Treaty 2024
+authority: World Intellectual Property Organization (WIPO)
+source_type: TREATY
+authority_level: PRIMARY
+jurisdiction: INTERNATIONAL
+language: en
+version: Final Act of the Diplomatic Conference (gratk_dc_7)
+publication_date: 2024-05-24
+effective_from: null
+entry_into_force_date: null
+legal_status: ADOPTED
+effective_status: NOT_IN_FORCE
+source_url: https://www.wipo.int/en/web/treaties/ip/gratk/index
+status_checked_at: 2026-09-30T14:40:00Z
+verification_status: verified
+=== END METADATA ===
+
+[SECTION: Article 1]
+Article 1 - Objectives:
+The objectives of this Treaty are to:
+(a) enhance the efficacy, transparency and quality of the patent system in relation to genetic resources and traditional knowledge associated with genetic resources, and
+(b) prevent patents from being granted erroneously for inventions that are not novel or inventive with regard to genetic resources and traditional knowledge associated with genetic resources.
+
+[SECTION: Article 2]
+Article 2 - Use of Terms:
+For the purposes of this Treaty:
+"Genetic material" means any material of plant, animal, microbial or other origin containing functional units of heredity;
+"Genetic resources" are genetic material of actual or potential value;
+"Traditional knowledge associated with genetic resources" means knowledge which is generated, preserved and transmitted in a traditional context, from generation to generation, by Indigenous Peoples or local communities;
+"Materially / directly based on" means that the genetic resources and/or traditional knowledge associated with genetic resources must have been necessary or essential to the claimed invention, and that the claimed invention must depend on the specific properties of the genetic resources and/or traditional knowledge.
+
+[SECTION: Article 3]
+Article 3 - Disclosure Requirement:
+3.1. Where the claimed invention in a patent application is materially based on genetic resources, each Contracting Party shall require applicants to disclose:
+(a) the country of origin of the genetic resources, or,
+(b) in cases where the information in sub-paragraph (a) is not known to the applicant, or where sub-paragraph (a) does not apply, the source of the genetic resources.
+
+3.2. Where the claimed invention in a patent application is materially based on traditional knowledge associated with genetic resources, each Contracting Party shall require applicants to disclose:
+(a) the Indigenous Peoples or local community that provided the traditional knowledge associated with genetic resources, or,
+(b) in cases where the information in sub-paragraph (a) is not known to the applicant, or where sub-paragraph (a) does not apply, the source of the traditional knowledge associated with genetic resources.
+
+3.3. In cases where none of the information in paragraphs 3.1 and/or 3.2 is known to the applicant, the applicant shall make a declaration to that effect.
+
+[SECTION: Article 4]
+Article 4 - Exceptions and Limitations:
+In complying with the obligation set forth in Article 3, Contracting Parties may, in special cases, adopt justifiable exceptions and limitations necessary to protect the public interest, in accordance with the provisions of this Treaty.
+
+[SECTION: Article 5]
+Article 5 - Sanctions and Remedies:
+5.1. Each Contracting Party shall put in place appropriate, effective and proportionate legal, administrative, and/or policy measures to address an applicant's failure to provide the information required in Article 3.
+5.2. Each Contracting Party shall provide an applicant with an opportunity to rectify a failure to include the minimum information referred to in Article 3, before any sanction is imposed or remedy applied.
+5.3. Subject to Article 5.4, no Contracting Party shall revoke or render unenforceable a patent solely on the basis of an applicant's failure to disclose the information specified in Article 3.
+5.4. Each Contracting Party may provide for post-grant sanctions or remedies where there has been fraudulent intent in respect of the failure to disclose the information specified in Article 3.
+
+[SECTION: Article 6]
+Article 6 - Non-Retroactivity:
+Contracting Parties shall not impose the obligations of this Treaty in relation to patent applications which have been filed prior to the entry into force of this Treaty for that Contracting Party.
+
+[SECTION: Article 7]
+Article 7 - Information Systems:
+7.1. Contracting Parties may establish information systems (such as databases) of genetic resources and traditional knowledge associated with genetic resources, in consultation with Indigenous Peoples and local communities and other stakeholders.
+7.2. The information systems should be accessible to patent offices for the purpose of search and examination of patent applications to prevent erroneous patent grants.
+
+[SECTION: Article 17]
+Article 17 - Entry into Force:
+This Treaty shall enter into force three months after 15 eligible Contracting Parties have deposited their instruments of ratification or accession. The Treaty is currently adopted but not in force internationally.

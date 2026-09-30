@@ -1,32 +1,49 @@
 """
 System test for DRUGVISTA
-Verifies all components work correctly
+Verifies all components work correctly.
+Directory-independent and UTF-8 console safe.
 """
 import os
 import sys
-import requests
 import time
+import requests
 import subprocess
-import threading
+from pathlib import Path
+
+# Safe UTF-8 console output on Windows
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+
+BASE_DIR = Path(__file__).resolve().parent
+BACKEND_DIR = BASE_DIR / "backend"
+DATA_DIR = BASE_DIR / "data"
+
+if str(BACKEND_DIR) not in sys.path:
+    sys.path.insert(0, str(BACKEND_DIR))
+
 
 def test_data_files():
     """Test that all data files exist"""
     print("📁 Testing data files...")
     
     required_files = [
-        "data/papers/alzheimer_paper_1.txt",
-        "data/papers/cancer_immunotherapy_1.txt", 
-        "data/papers/drug_toxicity_1.txt",
-        "data/clinical_trials/alzheimer_trial_1.txt",
-        "data/clinical_trials/cancer_trial_1.txt",
-        "data/market/alzheimer_market_1.txt",
-        "data/market/immunotherapy_market_1.txt"
+        DATA_DIR / "papers" / "alzheimer_paper_1.txt",
+        DATA_DIR / "papers" / "cancer_immunotherapy_1.txt", 
+        DATA_DIR / "papers" / "drug_toxicity_1.txt",
+        DATA_DIR / "clinical_trials" / "alzheimer_trial_1.txt",
+        DATA_DIR / "clinical_trials" / "cancer_trial_1.txt",
+        DATA_DIR / "market" / "alzheimer_market_1.txt",
+        DATA_DIR / "market" / "immunotherapy_market_1.txt"
     ]
     
     missing_files = []
     for file_path in required_files:
-        if not os.path.exists(file_path):
-            missing_files.append(file_path)
+        if not file_path.exists():
+            missing_files.append(str(file_path))
     
     if missing_files:
         print(f"❌ Missing files: {missing_files}")
@@ -35,16 +52,12 @@ def test_data_files():
     print("✅ All data files present")
     return True
 
+
 def test_vector_store():
-    """Test vector store creation"""
+    """Test vector store search and retrieval"""
     print("🔍 Testing vector store...")
     
     try:
-        # Change to backend directory to find the index files
-        original_dir = os.getcwd()
-        os.chdir("backend")
-        
-        sys.path.append(".")
         from vector_store import VectorStore
         
         vs = VectorStore()
@@ -52,47 +65,41 @@ def test_vector_store():
         
         if stats['total_documents'] == 0:
             print("❌ No documents in vector store")
-            os.chdir(original_dir)
             return False
         
         # Test search
         results = vs.search("Alzheimer's disease", top_k=3)
         if len(results) == 0:
             print("❌ Search returned no results")
-            os.chdir(original_dir)
             return False
         
-        print(f"✅ Vector store working ({stats['total_documents']} documents)")
-        os.chdir(original_dir)
+        print(f"✅ Vector store working ({stats['total_documents']} documents, {stats.get('total_chunks', 0)} chunks)")
         return True
         
     except Exception as e:
         print(f"❌ Vector store error: {e}")
-        if 'original_dir' in locals():
-            os.chdir(original_dir)
         return False
+
 
 def test_backend_api():
     """Test backend API"""
     print("🔧 Testing backend API...")
     
-    # Start backend in background
     backend_process = None
     try:
-        os.chdir("backend")
         backend_process = subprocess.Popen([
             sys.executable, "-m", "uvicorn", "main:app", 
+            "--app-dir", str(BACKEND_DIR),
             "--host", "127.0.0.1", "--port", "8000"
         ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        os.chdir("..")
         
         # Wait for startup
-        time.sleep(5)
+        time.sleep(4)
         
         # Test health endpoint
         response = requests.get("http://localhost:8000/health", timeout=10)
         if response.status_code != 200:
-            print("❌ Health check failed")
+            print(f"❌ Health check failed: {response.status_code}")
             return False
         
         # Test analyze endpoint
@@ -123,6 +130,7 @@ def test_backend_api():
             backend_process.terminate()
             backend_process.wait()
 
+
 def main():
     print("🧬 DRUGVISTA System Test")
     print("========================")
@@ -151,6 +159,7 @@ def main():
     else:
         print("❌ Some tests failed. Please check the issues above.")
         return False
+
 
 if __name__ == "__main__":
     success = main()
