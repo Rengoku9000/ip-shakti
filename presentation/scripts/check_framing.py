@@ -1,6 +1,6 @@
 from pptx import Presentation
 
-prs = Presentation(r'c:\Projects\drugvista\IP-SAKTI_Sahayak_SIH2026.pptx')
+prs = Presentation(r'c:\Projects\drugvista\presentation\source\IP-SAKTI_Sahayak_SIH2026.pptx')
 for i, slide in enumerate(prs.slides):
     print(f'=== SLIDE {i+1} ===')
     for s in slide.shapes:

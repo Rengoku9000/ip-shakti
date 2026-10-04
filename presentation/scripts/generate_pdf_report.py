@@ -3,12 +3,12 @@ import base64
 import subprocess
 
 PROJECT_DIR = r"c:\Projects\drugvista"
-ASSETS_DIR = os.path.join(PROJECT_DIR, "extracted_assets")
+ASSETS_DIR = os.path.join(PROJECT_DIR, "presentation", "assets")
 QR_DIR = os.path.join(ASSETS_DIR, "qrcodes")
 ICONS_DIR = os.path.join(ASSETS_DIR, "custom_icons")
 
-HTML_OUTPUT = os.path.join(PROJECT_DIR, "SIH2026_PROJECT_REPORT_OUTLAWS.html")
-PDF_OUTPUT = os.path.join(PROJECT_DIR, "SIH2026_PROJECT_REPORT_OUTLAWS.pdf")
+HTML_OUTPUT = os.path.join(PROJECT_DIR, "submission", "SIH2026_PROJECT_REPORT_OUTLAWS.html")
+PDF_OUTPUT = os.path.join(PROJECT_DIR, "submission", "SIH2026_PROJECT_REPORT_OUTLAWS.pdf")
 
 def img_to_base64(path):
     if os.path.exists(path):

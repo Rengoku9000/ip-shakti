@@ -6,8 +6,8 @@ from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.enum.shapes import MSO_SHAPE
 
-SRC_PPT = r"c:\Projects\drugvista\IP-SAKTI_Sahayak_SIH2026.pptx"
-DST_PPT = r"c:\Projects\drugvista\IP-SAKTI_Sahayak_SIH2026.pptx"
+SRC_PPT = r"c:\Projects\drugvista\presentation\source\IP-SAKTI_Sahayak_SIH2026.pptx"
+DST_PPT = r"c:\Projects\drugvista\presentation\source\IP-SAKTI_Sahayak_SIH2026.pptx"
 
 # Color Palette
 NAVY_DARK = RGBColor(11, 37, 69)       # #0B2545
@@ -25,10 +25,10 @@ BG_CARD = RGBColor(248, 250, 252)      # #F8FAFC
 BG_HERO = RGBColor(241, 245, 249)      # #F1F5F9
 WHITE = RGBColor(255, 255, 255)
 
-ICONS_DIR = r"c:\Projects\drugvista\extracted_assets\custom_icons"
-ASSETS_DIR = r"c:\Projects\drugvista\extracted_assets"
+ICONS_DIR = r"c:\Projects\drugvista\presentation\assets\custom_icons"
+ASSETS_DIR = r"c:\Projects\drugvista\presentation\assets"
 BRAIN_DIR = r"C:\Users\kunal\.gemini\antigravity-ide\brain\8c54cd72-cb39-4129-8802-00113cda2b8a"
-QR_DIR = r"c:\Projects\drugvista\extracted_assets\qrcodes"
+QR_DIR = r"c:\Projects\drugvista\presentation\assets\qrcodes"
 UI_PATH = os.path.join(ASSETS_DIR, "ui_screenshot.jpg")
 
 prs = Presentation(SRC_PPT)
@@ -439,20 +439,20 @@ if os.path.exists(qr_path1):
     p.font.bold = True
     p.font.color.rgb = NAVY_DARK
     p2 = tf_qr1.add_paragraph()
-    p2.text = "Source Code & Tests"
+    p2.text = "github.com/Rengoku9000/ip-shakti"
     p2.font.size = Pt(8)
     p2.font.color.rgb = BLUE_ACCENT
 
 if os.path.exists(qr_path2):
-    slide3.shapes.add_picture(qr_path2, right_x + Inches(3.1), qr_y, Inches(0.82), Inches(0.82))
-    tf_qr2 = add_text_box(slide3, right_x + Inches(4.0), qr_y + Inches(0.12), Inches(1.3), Inches(0.6))
+    slide3.shapes.add_picture(qr_path2, right_x + Inches(3.0), qr_y, Inches(0.82), Inches(0.82))
+    tf_qr2 = add_text_box(slide3, right_x + Inches(3.9), qr_y + Inches(0.12), Inches(1.5), Inches(0.6))
     p = tf_qr2.paragraphs[0]
-    p.text = "Technical Report"
+    p.text = "Project Report"
     p.font.size = Pt(9)
     p.font.bold = True
     p.font.color.rgb = NAVY_DARK
     p2 = tf_qr2.add_paragraph()
-    p2.text = "Documentation"
+    p2.text = "Google Drive Dossier"
     p2.font.size = Pt(8)
     p2.font.color.rgb = GREEN_DARK
 
@@ -800,29 +800,30 @@ ref_sections = [
     ]),
     ("3. Open-Source AI Stack & Project Repository", [
         ("FAISS Dense Vector Index & Sentence-Transformers", "huggingface.co", "qr_hf.png"),
-        ("IP-SAKTI Sahayak GitHub Repository", "github.com/Rengoku9000/Drugvista", "qr_github.png")
+        ("IP-SAKTI Sahayak GitHub Repository", "github.com/Rengoku9000/ip-shakti", "qr_github.png"),
+        ("Full Project Report & Evidence Dossier", "drive.google.com (SIH 2026)", "qr_report.png")
     ])
 ]
 
 curr_y = ref_y
 for s_title, s_items in ref_sections:
-    card_h = Inches(0.4) + len(s_items) * Inches(0.48)
+    card_h = Inches(0.32) + len(s_items) * Inches(0.42)
     add_card(slide6, left_x, curr_y, left_w, card_h, bg_color=WHITE, border_color=SLATE_BORDER)
     
-    tf = add_text_box(slide6, left_x + Inches(0.2), curr_y + Inches(0.08), left_w - Inches(0.4), Inches(0.3))
+    tf = add_text_box(slide6, left_x + Inches(0.2), curr_y + Inches(0.06), left_w - Inches(0.4), Inches(0.28))
     p = tf.paragraphs[0]
     p.text = s_title
-    p.font.size = Pt(10.5)
+    p.font.size = Pt(10)
     p.font.bold = True
     p.font.color.rgb = NAVY_DARK
     
-    item_y = curr_y + Inches(0.38)
+    item_y = curr_y + Inches(0.34)
     for iname, iurl, iqr in s_items:
         qr_p = os.path.join(QR_DIR, iqr)
         if os.path.exists(qr_p):
-            slide6.shapes.add_picture(qr_p, left_x + Inches(0.2), item_y, Inches(0.38), Inches(0.38))
+            slide6.shapes.add_picture(qr_p, left_x + Inches(0.2), item_y, Inches(0.34), Inches(0.34))
         
-        tf_item = add_text_box(slide6, left_x + Inches(0.68), item_y, left_w - Inches(0.8), Inches(0.38))
+        tf_item = add_text_box(slide6, left_x + Inches(0.64), item_y, left_w - Inches(0.75), Inches(0.34))
         p = tf_item.paragraphs[0]
         run1 = p.add_run()
         run1.text = iname + " — "
@@ -834,7 +835,7 @@ for s_title, s_items in ref_sections:
         run2.font.size = Pt(8)
         run2.font.color.rgb = BLUE_ACCENT
         
-        item_y += Inches(0.46)
+        item_y += Inches(0.42)
         
     curr_y += card_h + Inches(0.12)
 
@@ -874,6 +875,28 @@ for s in specs:
     p.text = s
     p.font.size = Pt(8)
     p.font.color.rgb = SLATE_MUTED
+
+# Enforce Slide 1 Team Name and Slides 2-6 OUTLAWS badge
+slide1 = prs.slides[0]
+for shape in slide1.shapes:
+    if shape.has_text_frame:
+        for p in shape.text_frame.paragraphs:
+            if "Team Name" in p.text:
+                p.text = "Team Name – OUTLAWS"
+
+for idx in range(1, len(prs.slides)):
+    slide = prs.slides[idx]
+    for s in slide.shapes:
+        if 'oval' in s.name.lower() or (s.top < 500000 and s.left < 1000000 and s.width < 2500000):
+            tf = s.text_frame
+            tf.word_wrap = False
+            p = tf.paragraphs[0]
+            p.text = "OUTLAWS"
+            p.font.name = "Segoe UI"
+            p.font.size = Pt(16)
+            p.font.bold = True
+            p.font.color.rgb = RGBColor(11, 37, 69)
+            p.alignment = PP_ALIGN.CENTER
 
 # Save presentation
 prs.save(DST_PPT)

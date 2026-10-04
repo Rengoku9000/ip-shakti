@@ -1,7 +1,7 @@
 import os
 from PIL import Image, ImageDraw, ImageFont
 
-out_dir = r"c:\Projects\drugvista\extracted_assets\custom_icons"
+out_dir = r"c:\Projects\drugvista\presentation\assets\custom_icons"
 os.makedirs(out_dir, exist_ok=True)
 
 def draw_circle_bg(draw, size, bg_color):

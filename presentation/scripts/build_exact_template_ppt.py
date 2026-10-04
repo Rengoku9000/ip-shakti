@@ -21,12 +21,12 @@ def replace_picture_blob(shape, image_path):
 
 def main():
     src_pptx = r"C:\Projects\Secure mesh\docs\PPT\SecureMesh.pptx"
-    out_pptx = r"C:\Projects\drugvista\IP-SAKTI_Sahayak_SIH2026.pptx"
+    out_pptx = r"C:\Projects\drugvista\presentation\source\IP-SAKTI_Sahayak_SIH2026.pptx"
     
     # Asset directories
-    assets_dir = r"c:\Projects\drugvista\extracted_assets\new_slide_assets"
-    qr_dir = r"c:\Projects\drugvista\extracted_assets\qrcodes"
-    ui_screenshot = r"c:\Projects\drugvista\extracted_assets\ui_screenshot.jpg"
+    assets_dir = r"c:\Projects\drugvista\presentation\assets\new_slide_assets"
+    qr_dir = r"c:\Projects\drugvista\presentation\assets\qrcodes"
+    ui_screenshot = r"c:\Projects\drugvista\presentation\assets\ui_screenshot.jpg"
     brain_dir = r"C:\Users\kunal\.gemini\antigravity-ide\brain\8c54cd72-cb39-4129-8802-00113cda2b8a"
 
     os.makedirs(qr_dir, exist_ok=True)

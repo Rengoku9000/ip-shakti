@@ -3,9 +3,9 @@ import fitz
 import os
 import time
 
-ppt_path = os.path.abspath(r"c:\Projects\drugvista\IP-SAKTI_Sahayak_SIH2026.pptx")
-pdf_path = os.path.abspath(r"c:\Projects\drugvista\IP-SAKTI_Sahayak_SIH2026.pdf")
-out_dir = os.path.abspath(r"c:\Projects\drugvista\slides_preview")
+ppt_path = os.path.abspath(r"c:\Projects\drugvista\presentation\source\IP-SAKTI_Sahayak_SIH2026.pptx")
+pdf_path = os.path.abspath(r"c:\Projects\drugvista\presentation\work\renders\IP-SAKTI_Sahayak_SIH2026.pdf")
+out_dir = os.path.abspath(r"c:\Projects\drugvista\presentation\work\renders\slides_preview")
 os.makedirs(out_dir, exist_ok=True)
 
 try:

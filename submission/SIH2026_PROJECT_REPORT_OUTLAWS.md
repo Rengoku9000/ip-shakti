@@ -16,7 +16,8 @@
 | **Team Name** | **OUTLAWS** |
 | **Team ID** | **146711** |
 | **Target Ministries / Bodies**| Ministry of Ayush, Intellectual Property India (CGPDTM), National Biodiversity Authority (NBA), CSIR-TKDL |
-| **Source Code Repository** | [github.com/Rengoku9000/Drugvista](https://github.com/Rengoku9000/Drugvista) |
+| **Source Code Repository** | [github.com/Rengoku9000/ip-shakti](https://github.com/Rengoku9000/ip-shakti) |
+| **Documentation & Dossier** | [Google Drive Dossier](https://drive.google.com/drive/folders/1nfDT2fVEXlzJ61C37zGnA_zNBlg5g-mK?usp=sharing) |
 | **Operational Readiness** | **TRL-6 (Fully functional, verified prototype with 106 automated regression tests)** |
 
 ---
@@ -382,4 +383,4 @@ The project stands at **Technology Readiness Level 6 (TRL-6)**, supported by a c
 - **Team ID**: 146711
 - **Problem Statement ID**: SIH26045
 - **Hackathon**: Smart India Hackathon 2026
-- **Repository**: [https://github.com/Rengoku9000/Drugvista](https://github.com/Rengoku9000/Drugvista)
+- **Repository**: [https://github.com/Rengoku9000/ip-shakti](https://github.com/Rengoku9000/ip-shakti)

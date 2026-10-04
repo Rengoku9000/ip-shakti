@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw, ImageFont
 import os
 
-out_dir = r"c:\Projects\drugvista\extracted_assets\new_slide_assets"
+out_dir = r"c:\Projects\drugvista\presentation\assets\new_slide_assets"
 os.makedirs(out_dir, exist_ok=True)
 
 # Generate Vector Engine Database Icon for Slide 4 Image 2

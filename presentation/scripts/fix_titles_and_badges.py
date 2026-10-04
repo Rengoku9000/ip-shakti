@@ -3,7 +3,7 @@ from pptx.util import Pt
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN
 
-pptx_path = r"c:\Projects\drugvista\IP-SAKTI_Sahayak_SIH2026.pptx"
+pptx_path = r"c:\Projects\drugvista\presentation\source\IP-SAKTI_Sahayak_SIH2026.pptx"
 prs = Presentation(pptx_path)
 
 titles = [

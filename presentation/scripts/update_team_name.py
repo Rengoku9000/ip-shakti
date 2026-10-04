@@ -1,6 +1,6 @@
 from pptx import Presentation
 
-pptx_path = r"c:\Projects\drugvista\IP-SAKTI_Sahayak_SIH2026.pptx"
+pptx_path = r"c:\Projects\drugvista\presentation\source\IP-SAKTI_Sahayak_SIH2026.pptx"
 prs = Presentation(pptx_path)
 
 # 1. Slide 1 update

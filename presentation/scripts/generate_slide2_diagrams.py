@@ -265,7 +265,7 @@ def make_diagram_4(out_path):
     print("Saved Diagram 4 to", out_path)
 
 if __name__ == "__main__":
-    out_dir = r"c:\Projects\drugvista\extracted_assets\new_slide_assets"
+    out_dir = r"c:\Projects\drugvista\presentation\assets\new_slide_assets"
     os.makedirs(out_dir, exist_ok=True)
     make_diagram_1(os.path.join(out_dir, "diag_col1_deterministic.png"))
     make_diagram_2(os.path.join(out_dir, "diag_col2_dual_jurisdiction.png"))

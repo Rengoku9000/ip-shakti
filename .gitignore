@@ -28,6 +28,7 @@ slide_shapes_dump.txt
 all_runs_dump.txt
 dumped_icons/
 slides_preview/
+presentation/work/
 
 # SQLite temporary WAL / SHM files
 *.db-wal

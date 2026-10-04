@@ -23,7 +23,7 @@ Streamlit interface  →  FastAPI service  →  Retrieval and reasoning
                                          └─ Local knowledge corpus and source manifest
 ```
 
-The application code and its data live in [`drugvista/`](drugvista/). The top-level `data/` and `docs/` directories contain repository-level materials. The SIH report and presentation are available as [`SIH2026_PROJECT_REPORT_OUTLAWS.md`](SIH2026_PROJECT_REPORT_OUTLAWS.md) and [`IP-SAKTI_Sahayak_SIH2026_submission_ready.pptx`](IP-SAKTI_Sahayak_SIH2026_submission_ready.pptx).
+The application code and its data live in [`drugvista/`](drugvista/). The top-level `data/` and `docs/` directories contain repository-level materials. Final SIH hand-in files are grouped in [`submission/`](submission/), while editable presentation sources and assets are in [`presentation/`](presentation/).
 
 ## Run locally
 
@@ -82,12 +82,15 @@ When configured, prompts may be sent to that endpoint. Use a provider and deploy
 | `drugvista/data/knowledge/` | Source corpus, manifests, and evaluation datasets |
 | `drugvista/storage/` | SQLite metadata database and FAISS vector index |
 | `tests/` | Automated test suite |
-| `docs/` | Project documentation |
+| `docs/` | Application and knowledge-base documentation |
+| `presentation/` | Editable deck source, assets, generation scripts, and working previews |
+| `submission/` | Final presentation and project report files |
 
 ## Project references
 
-- [SIH 2026 project report](SIH2026_PROJECT_REPORT_OUTLAWS.md)
-- [Submission-ready presentation](IP-SAKTI_Sahayak_SIH2026_submission_ready.pptx)
+- [SIH 2026 project report](submission/SIH2026_PROJECT_REPORT_OUTLAWS.md)
+- [Submission-ready presentation](submission/IP-SAKTI_Sahayak_SIH2026_submission_ready.pptx)
+- [Submission PDF](submission/IP-SAKTI_Sahayak_SIH2026_outlaws.pdf)
 - [Knowledge base notes](drugvista/data/knowledge/README.md)
 - [Source repository](https://github.com/Rengoku9000/ip-shakti)
 - [Project dossier](https://drive.google.com/drive/folders/1nfDT2fVEXlzJ61C37zGnA_zNBlg5g-mK?usp=sharing)

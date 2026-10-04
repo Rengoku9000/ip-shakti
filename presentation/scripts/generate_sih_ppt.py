@@ -19,7 +19,7 @@ def create_presentation():
 
     # Paths to assets
     base_dir = r"c:\Projects\drugvista"
-    assets_dir = os.path.join(base_dir, "extracted_assets")
+    assets_dir = os.path.join(base_dir, "presentation", "assets")
     sih_logo_path = os.path.join(assets_dir, "sih_logo_clean.png")
     sih_bulb_path = os.path.join(assets_dir, "sih_bulb_clean.png")
     ui_screenshot_path = os.path.join(assets_dir, "ui_screenshot.jpg")
@@ -1167,7 +1167,7 @@ def create_presentation():
         p.font.color.rgb = c_text_muted
 
     # Save presentation
-    output_path = os.path.join(base_dir, "IP-SAKTI_Sahayak_SIH2026.pptx")
+    output_path = os.path.join(base_dir, "presentation", "source", "IP-SAKTI_Sahayak_SIH2026.pptx")
     prs.save(output_path)
     print(f"Polished presentation saved successfully to {output_path}")
 
